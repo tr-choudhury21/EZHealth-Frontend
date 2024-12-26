@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import appoint from '../assets/signin.png'
 
 const AppointmentPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -111,7 +112,7 @@ const AppointmentPage = () => {
   return (
     <div className="bg-blue-100 min-h-screen">
       {/* Header */}
-      <header className="bg-blue-600 text-white text-center py-6 mt-16">
+      <header className="bg-blue-600 text-white text-center py-6 mt-20">
         <h1 className="text-3xl font-bold">Book an Appointment</h1>
         <p className="mt-2 text-lg">We’re here to provide you with the best care</p>
       </header>
@@ -124,7 +125,7 @@ const AppointmentPage = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-blue-700">
               Expert Medical Care You Can Trust
             </h2>
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-gray-600 text-lg">
               Our team of experienced doctors is here to ensure the best healthcare experience
               for you. Schedule your appointment now and take the first step towards a healthier
               tomorrow.
@@ -134,9 +135,9 @@ const AppointmentPage = () => {
           {/* Image */}
           <div className="md:w-1/2 mt-8 md:mt-0">
             <img
-              src="https://via.placeholder.com/500x400.png?text=Appointment+Hero+Image"
+              src={appoint}
               alt="Doctor Consultation"
-              className="w-full rounded-lg shadow-lg"
+              className="w-full rounded-lg"
             />
           </div>
         </div>
