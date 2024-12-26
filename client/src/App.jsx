@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage/>} />
@@ -50,8 +50,8 @@ function App() {
           <Route path="/recommend" element={<Recommendation/>} />
           <Route path="/service" element={<ServicesPage/>} />
           <Route path="/appointment" element={<AppointmentPage/>} />
-          <Route path="/login" element={<LoginPage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>} />
-          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/register" element={<RegistrationPage/>} />
         </Routes>
         <Footer/>
         <ToastContainer position="top-center"/>

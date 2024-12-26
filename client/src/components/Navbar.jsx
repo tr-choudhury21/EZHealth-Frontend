@@ -1,15 +1,37 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Context } from '../main';
 import logo from '../assets/EZHealthLogo.png'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import { IoClose } from "react-icons/io5"; 
+import { Context } from '../auth';
 
-const Navbar = () => {
+const Navbar = ({isAuthenticated, setIsAuthenticated}) => {
 
     const [show, setShow] = useState(false);
-    const { isAuthenticated , setIsAuthenticated} = useContext(Context);
-    console.log("isAuthenticated in Navbar:", isAuthenticated);
+    // const { isAuthenticated , setIsAuthenticated} = useContext(Context);
+    
+    useEffect(() => {
+        console.log("Navbar isAuthenticated:", isAuthenticated);
+    }, [isAuthenticated]);
+    
+
+    // useEffect(() => {
+    //     const verifyAuthentication = async () => {
+    //         try {
+    //             const { data } = await axios
+    //             .get(
+    //                 'https://localhost:5000/api/v1/user/verifyAuth',
+    //                 {withCredentials: true}
+    //             );
+    //             setIsAuthenticated(data.isAuthenticated);
+    //         } catch (error) {
+    //             setIsAuthenticated(false);
+    //         }
+    //     };
+    //     verifyAuthentication();
+    // }, [setIsAuthenticated])
 
     const handleLogout = async()=>{
         await axios
@@ -21,7 +43,7 @@ const Navbar = () => {
             setIsAuthenticated(false);
         })
         .catch((err) => {
-            toast.error(err.response.data.message);
+            toast.error(err.res.data.message);
         });
     };
 
@@ -34,37 +56,60 @@ const Navbar = () => {
     return (
         <nav className="bg-blue-100 fixed top-0 left-0 w-full z-10">
             <div className="container mx-auto px-6 py-2 flex justify-around items-center">
-                <img src={logo} className='w-60' alt="" />
+                {/* Logo */}
+                <img src={logo} className="w-60" alt="Logo" />
+
+                {/* Hamburger Icon */}
+                <div className="md:hidden text-2xl cursor-pointer" onClick={() => setShow(!show)}>
+                    {show ? <IoClose /> : <GiHamburgerMenu />}
+                </div>
+
+                {/* Desktop Links */}
                 <ul className="hidden md:flex gap-8 text-gray-700">
-                    <Link to='/'><li className="cursor-pointer text-xl hover:text-orange-500">Home</li></Link>
-                    <Link to='/service'><li className="cursor-pointer text-xl hover:text-orange-500">Services</li></Link>
-                    <Link to='/about'><li className="cursor-pointer text-xl hover:text-orange-500">About Us</li></Link>
-                    <Link to='/doctors'><li className="cursor-pointer text-xl hover:text-orange-500">Doctors</li></Link>
+                    <Link to="/"><li className="cursor-pointer text-xl hover:text-orange-500">Home</li></Link>
+                    <Link to="/about"><li className="cursor-pointer text-xl hover:text-orange-500">About</li></Link>
+                    <Link to="/service"><li className="cursor-pointer text-xl hover:text-orange-500">Services</li></Link>
+                    <Link to="/doctors"><li className="cursor-pointer text-xl hover:text-orange-500">Doctors</li></Link>
                 </ul>
-                <div className="flex gap-4">
+
+                {/* Desktop Auth Buttons */}
+                <div className="hidden md:flex gap-4">
                     {isAuthenticated ? (
-                        <button className="hidden md:block px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-orange-500" onClick={handleLogout}>
+                        <button className="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-orange-500" onClick={handleLogout}>
                             Logout
                         </button>
                     ) : (
-                        <>
-                            <Link to='/login'>
-                                <button className="hidden md:block px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-orange-50 hover:text-orange-600 hover:border-orange-600">
-                                    Login
-                                </button>
-                            </Link>
-                            <Link to='/register'>
-                                <button className="hidden md:block px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-orange-500">
-                                    Register
-                                </button>
-                            </Link>
-                        </>
+                        <button className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-orange-500" onClick={gotoLogin}>
+                            Login
+                        </button>                          
                     )}
                 </div>
             </div>
-            {/* <div className='hamburger' onClick={() => setShow(!show)}>
-                <GiHamburgerMenu/>
-            </div> */}
+
+            {/* Mobile Menu */}
+            {show && (
+                <div className="md:hidden bg-blue-100 shadow-md">
+                    <ul className="flex items-center flex-col gap-4 py-4 px-6 text-gray-700">
+                        <Link to="/"><li className="cursor-pointer text-lg hover:text-orange-500" onClick={() => setShow(false)}>Home</li></Link>
+                        <Link to="/service"><li className="cursor-pointer text-lg hover:text-orange-500" onClick={() => setShow(false)}>Services</li></Link>
+                        <Link to="/about"><li className="cursor-pointer text-lg hover:text-orange-500" onClick={() => setShow(false)}>About</li></Link>
+                        <Link to="/doctors"><li className="cursor-pointer text-lg hover:text-orange-500" onClick={() => setShow(false)}>Doctors</li></Link>
+                    </ul>
+                    <div className="flex items-center flex-col gap-4 px-6 pb-4">
+                        {isAuthenticated ? (
+                            <button className="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-orange-500" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        ) : (
+                                
+                                    <button className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-orange-500" onClick={gotoLogin}>
+                                        Login
+                                    </button>
+                            
+                        )}
+                    </div>
+                </div>
+            )}
         </nav>
     )
 };

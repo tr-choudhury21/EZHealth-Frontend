@@ -2,8 +2,9 @@ import React, {useContext, useState} from "react";
 import { IoEyeOff, IoEye } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { Link, useNavigate, Navigate } from "react-router-dom";
-import {Context} from '../main'
+import {Context} from '../auth'
 import axios from "axios";
+import Loader from "../components/Loader";
 
 const LoginPage = () => {
 
@@ -24,7 +25,7 @@ const LoginPage = () => {
         e.preventDefault();
         setLoading(true); // Indicate login is in progress
         try {
-        await axios
+        const res = await axios
             .post(
             "http://localhost:5000/api/v1/user/login",
             { email, password,  role: "Patient" },
@@ -33,15 +34,13 @@ const LoginPage = () => {
                 headers: { "Content-Type": "application/json" },
             }
             )
-            .then((res) => {
             toast.success(res.data.message);
             setIsAuthenticated(true);
             navigateTo("/");
             setEmail("");
             setPassword("");
-            });
         } catch (error) {
-        toast.error(error.response.data.message);
+            toast.error(error.res.data.message);
         }
         finally {
             setLoading(false); // Stop loading spinner
@@ -49,7 +48,7 @@ const LoginPage = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>; // Optional: Add a spinner or placeholder during loading
+        <Loader/>; // Optional: Add a spinner or placeholder during loading
     }
 
     if (isAuthenticated) {

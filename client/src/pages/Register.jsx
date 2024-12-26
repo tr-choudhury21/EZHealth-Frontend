@@ -3,7 +3,7 @@ import { IoEyeOff, IoEye } from "react-icons/io5";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Context } from '../main';
+import { Context } from '../auth';
 
 const RegistrationPage = () => {
 
@@ -48,17 +48,17 @@ const RegistrationPage = () => {
                 setPassword("");
                 });
             } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error.res.data.message);
             }
         };
     
-        if (isAuthenticated) {
-            return <Navigate to={"/"} />;
-        }
+        // if (isAuthenticated) {
+        //     return <Navigate to={"/"} />;
+        // }
 
     return (
         <div className="bg-blue-100 min-h-screen flex justify-center items-center">
-            <div className="bg-blue-50 shadow-lg rounded-lg p-8 w-full max-w-4xl">
+            <div className="bg-blue-50 shadow-lg rounded-lg mt-24 mb-20 p-10 w-full max-w-4xl">
                 <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
                 Register
                 </h2>
@@ -167,7 +167,7 @@ const RegistrationPage = () => {
                         id="gender"
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <option value="" disabled selected>
+                        <option defaultValue="" disabled >
                         Select your gender
                         </option>
                         <option value="Male">Male</option>
