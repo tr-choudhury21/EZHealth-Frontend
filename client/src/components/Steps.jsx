@@ -3,7 +3,7 @@ import contact from '../assets/contact.png'
 
 const StepsToBook = () => {
   return (
-    <div className="relative bg-blue-100 py-12 mx-12 px-6 md:px-16 lg:flex lg:items-center lg:justify-around">
+    <div className="relative bg-blue-100 py-12 mx-12 px-6 md:px-16 lg:flex lg:items-center lg:justify-center">
       {/* Floating Background Elements */}
       <div className="absolute top-0 left-0 w-40 h-40 bg-blue-200 rounded-full blur-2xl opacity-50"></div>
       <div className="absolute bottom-0 right-0 w-32 h-32 bg-green-300 rounded-full blur-3xl opacity-40"></div>
