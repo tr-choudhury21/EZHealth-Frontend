@@ -1,5 +1,5 @@
 import React , {useContext, useEffect} from "react";
-import { Context } from "./main";
+import { Context } from "./auth";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +12,8 @@ import Footer from "./components/Footer";
 import DoctorsPage from "./pages/Doctors";
 import ServicesPage from "./components/Service";
 import AppointmentPage from "./pages/Appointment";
+import Loader from "./components/Loader";
+import Recommendation from "./components/Recommendation";
 
 function App() {
 
@@ -45,9 +47,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage/>} />
           <Route path="/doctors" element={<DoctorsPage/>} />
+          <Route path="/recommend" element={<Recommendation/>} />
           <Route path="/service" element={<ServicesPage/>} />
           <Route path="/appointment" element={<AppointmentPage/>} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>} />
           <Route path="/register" element={<RegistrationPage />} />
         </Routes>
         <Footer/>
