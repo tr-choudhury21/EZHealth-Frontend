@@ -87,43 +87,58 @@ const DoctorsPage = () => {
       </div>
 
       {/* Doctor Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4">
         {doctors && doctors.length > 0 ? (
-          doctors.map((element) => {
+          doctors.map((element, index) => {
             return (
-              <div className="card">
-                <img
-                  src={element.docAvatar && element.docAvatar.url}
-                  alt="doctor avatar"
-                />
-                <h4>{`${element.firstName} ${element.lastName}`}</h4>
-                <div className="details">
-                  <p>
-                    Email: <span>{element.email}</span>
-                  </p>
-                  <p>
-                    Phone: <span>{element.phone}</span>
-                  </p>
-                  <p>
-                    DOB: <span>{element.dob.substring(0, 10)}</span>
-                  </p>
-                  <p>
-                    Department: <span>{element.doctorDepartment}</span>
-                  </p>
-                  <p>
-                    Age: <span>{element.age}</span>
-                  </p>
-                  <p>
-                    Gender: <span>{element.gender}</span>
-                  </p>
+              <div
+                key={index}
+                className="card bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <div className="flex justify-center items-center mt-6 transform transition duration-300 hover:scale-150">
+                  <img
+                    src={element.docAvatar && element.docAvatar.url}
+                    alt="doctor avatar"
+                    className="w-24 h-24 object-cover rounded-full border-4 border-gray-300 shadow-md"
+                  />
+                </div>
+                <div className="p-4">
+                  <h4 className="text-lg text-center font-bold text-gray-800">
+                    {`${element.firstName} ${element.lastName}`}
+                  </h4>
+                  <div className="details mt-2 text-gray-600">
+                    <p>
+                      <span className="font-semibold">Email:</span> {element.email}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Phone:</span> {element.phone}
+                    </p>
+                    <p>
+                      <span className="font-semibold">DOB:</span>{" "}
+                      {element.dob.substring(0, 10)}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Department:</span>{" "}
+                      {element.doctorDepartment}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Age:</span> {element.age}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Gender:</span> {element.gender}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
           })
         ) : (
-          <h1>No Registered Doctors Found!</h1>
+          <h1 className="col-span-full text-center text-2xl font-bold text-gray-500">
+            No Registered Doctors Found!
+          </h1>
         )}
       </div>
+
     </div>
   );
 };

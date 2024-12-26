@@ -1,4 +1,6 @@
 import React from "react";
+import about from '../assets/about.png'
+import team from '../assets/whoweare.png'
 
 const AboutUsPage = () => {
     return (
@@ -21,9 +23,9 @@ const AboutUsPage = () => {
                 </div>
                 <div className="md:w-1/2 mt-12 md:mt-0">
                     <img
-                    src="https://via.placeholder.com/500x400"
+                    src={about}
                     alt="Hero Illustration"
-                    className="w-full rounded-lg shadow-lg"
+                    className="w-full rounded-lg"
                     />
                 </div>
                 </div>
@@ -62,9 +64,9 @@ const AboutUsPage = () => {
                     {/* Biography Image */}
                     <div className="relative">
                     <img
-                        src="https://via.placeholder.com/400x400"
+                        src={team}
                         alt="Team"
-                        className="rounded-lg shadow-lg"
+                        className="rounded-lg"
                     />
                     {/* Floating Decorative Images */}
                     <img

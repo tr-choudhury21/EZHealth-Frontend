@@ -8,6 +8,8 @@ import ortho from '../assets/departments/ortho.jpg'
 import pedia from '../assets/departments/pedia.jpg'
 import radio from '../assets/departments/radio.jpg'
 import therapy from '../assets/departments/therapy.jpg'
+import services from '../assets/services.png'
+import head from '../assets/signupheader.png'
 
 const departmentsData = [
   {
@@ -69,17 +71,42 @@ const departmentsData = [
 
 const ServicesPage = () => {
   return (
-    <div className="relative bg-blue-100 min-h-screen py-12 px-6 mt-12 md:px-16">
+    <div className="relative bg-blue-100 min-h-screen py-12 px-6 mt-16 md:px-16">
       {/* Floating Items */}
       <div className="absolute top-0 left-0 w-40 h-40 bg-blue-200 rounded-full blur-2xl opacity-50"></div>
       <div className="absolute top-1/4 right-0 w-32 h-32 bg-green-300 rounded-full blur-3xl opacity-40"></div>
       <div className="absolute bottom-0 left-1/3 w-28 h-28 bg-orange-300 rounded-full blur-xl opacity-50"></div>
 
       {/* Hero Section */}
+      <div className="relative flex flex-col lg:flex-row items-center justify-around mb-16">
+        {/* Text Section */}
+        <div className="max-w-lg text-center lg:text-left">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-600">
+          Trust Our Services
+          </h1>
+          <p className=" text-gray-700 mt-4 text-lg md:text-xl">
+              Our medical departments are staffed with experienced professionals to cater to your needs. 
+          </p>
+          <p className="text-gray-700 mt-2 text-md">
+            Whether it’s a routine checkup or a specialized procedure, we are here to serve you with excellence.
+          </p>
+        </div>
+
+        {/* Hero Image */}
+        <div className="mt-8 lg:mt-0 lg:ml-8">
+          <img
+            src={head}
+            alt="Hero Section"
+            className="w-full max-w-md rounded-lg"
+          />
+        </div>
+      </div>
+
+      {/* Departments Section */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-5xl font-bold text-blue-600">
+        <h2 className="text-3xl md:text-4xl font-bold text-blue-600">
           Our Departments
-        </h1>
+        </h2>
         <p className="text-gray-600 mt-4 text-lg">
           Explore our specialized medical departments to find the care you need.
         </p>
@@ -93,7 +120,7 @@ const ServicesPage = () => {
             className="bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:scale-105"
           >
             {/* Department Image */}
-            <div className="aspect-square"> 
+            <div className="aspect-square">
               <img
                 src={department.image}
                 alt={department.name}
@@ -103,9 +130,9 @@ const ServicesPage = () => {
 
             {/* Department Details */}
             <div className="p-4">
-              <h2 className="text-md font-semibold text-gray-800">
+              <h3 className="text-md font-semibold text-gray-800">
                 {department.name}
-              </h2>
+              </h3>
               <p className="text-xs text-gray-600 mt-1">
                 {department.description}
               </p>
