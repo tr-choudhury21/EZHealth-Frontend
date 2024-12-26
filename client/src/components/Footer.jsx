@@ -1,5 +1,7 @@
 import React from "react";
 import { FaXTwitter , FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { MdPhone, MdMail, MdLocationOn } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -21,36 +23,36 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-3">
             <li>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="text-gray-200 hover:text-gray-50 transition"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="text-gray-200 hover:text-gray-50 transition"
               >
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/service"
                 className="text-gray-200 hover:text-gray-50 transition"
               >
                 Services
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="text-gray-200 hover:text-gray-50 transition"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -60,15 +62,15 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
           <ul className="space-y-3">
             <li className="flex items-center space-x-3">
-              <span className="material-icons">location_on</span>
+              <span className="material-icons"><MdLocationOn/></span>
               <span>123 Health St, Wellness City</span>
             </li>
             <li className="flex items-center space-x-3">
-              <span className="material-icons">phone</span>
-              <span>+1 234 567 890</span>
+              <span className="material-icons"><MdPhone/></span>
+              <span>+91 1234 567 890</span>
             </li>
             <li className="flex items-center space-x-3">
-              <span className="material-icons">email</span>
+              <span className="material-icons"><MdMail/></span>
               <span>info@hospital.com</span>
             </li>
           </ul>
