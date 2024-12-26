@@ -6,6 +6,13 @@ import ServicesPage from "../components/Service";
 import MessageUs from "../components/Message";
 import { Link } from "react-router-dom";
 import FeaturesSection from "../components/Features";
+import AboutUsPage from "./About";
+import services from '../assets/services.png'
+import ServiceHeader from "../components/ServiceHeader";
+import DoctorHeader from "../components/DoctorHeader";
+import StepsToBook from "../components/Steps";
+import FAQComponent from "../components/FAQ";
+import PredictionHeader from "../components/PredictionHeader";
 
 const HomePage = () => {
   return (
@@ -17,21 +24,21 @@ const HomePage = () => {
       <div className="absolute bottom-0 left-1/3 w-28 h-28 bg-red-300 rounded-full blur-2xl opacity-40"></div>
         <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-8">
           {/* Text Content */}
-          <div className="md:w-1/2 text-center md:text-left">
+          <div className="pl-16 md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-snug">
-              Serving Your Health Needs <br /> Is Our Priority.
+              Serving Your <span className="text-orange-500"> Health</span> Needs <br /> Is Our <span className="text-orange-500"> Priority</span>.
             </h1>
             <p className="mt-4 text-gray-600">
               There’s nothing more important than our good health because it is
               our principal capital asset for our future.
             </p>
-            <Link to='/appointment'><button className="mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-orange-500">
+            <Link to='/appointment'><button className="mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-orange-500 transition hover:scale-105">
               Make Appointment
             </button></Link>
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/2 relative">
+          <div className="pl-24 md:w-1/2 relative">
             <img
               src={hero}
               alt="Doctor"
@@ -71,7 +78,13 @@ const HomePage = () => {
         </div>
       </header>
       {/* <ServicesPage/> */}
+      {/* <AboutUsPage/> */}
+      <StepsToBook/>
+      <ServiceHeader/>
+      <DoctorHeader/>
+      <PredictionHeader/>
       <FeaturesSection/>
+      <FAQComponent/>
       <MessageUs/>
     </div>
   );
