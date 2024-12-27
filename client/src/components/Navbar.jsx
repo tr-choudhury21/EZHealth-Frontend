@@ -7,10 +7,15 @@ import axios from 'axios';
 import { IoClose } from "react-icons/io5"; 
 import { Context } from '../auth';
 
-const Navbar = ({isAuthenticated, setIsAuthenticated}) => {
+const Navbar = () => {
 
     const [show, setShow] = useState(false);
-    // const { isAuthenticated , setIsAuthenticated} = useContext(Context);
+    const { isAuthenticated , setIsAuthenticated, user } = useContext(Context);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
     
     useEffect(() => {
         console.log("Navbar isAuthenticated:", isAuthenticated);
@@ -73,7 +78,7 @@ const Navbar = ({isAuthenticated, setIsAuthenticated}) => {
                 </ul>
 
                 {/* Desktop Auth Buttons */}
-                <div className="hidden md:flex gap-4">
+                {/* <div className="hidden md:flex gap-4">
                     {isAuthenticated ? (
                         <button className="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-orange-500" onClick={handleLogout}>
                             Logout
@@ -82,6 +87,44 @@ const Navbar = ({isAuthenticated, setIsAuthenticated}) => {
                         <button className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-orange-500" onClick={gotoLogin}>
                             Login
                         </button>                          
+                    )}
+                </div> */}
+
+                <div className="hidden md:flex gap-4">
+                    {isAuthenticated ? (
+                        <div className="relative">
+                            {/* User Button */}
+                            <button
+                                className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-orange-500"
+                                onClick={toggleDropdown}
+                            >
+                                {user.firstName}
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            {isDropdownOpen && (
+                                <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-lg shadow-lg">
+                                    <button
+                                        className="block w-full px-4 py-2 text-center text-gray-800 hover:bg-gray-100 hover:text-orange-400 hover:font-semibold"
+                                    >
+                                        Profile
+                                    </button>
+                                    <button
+                                        className="block w-full px-4 py-2 text-center text-gray-800 hover:bg-gray-100 hover:text-orange-400 hover:font-semibold"
+                                        onClick={handleLogout}
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <button
+                            className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-orange-500"
+                            onClick={gotoLogin}
+                        >
+                            Login
+                        </button>
                     )}
                 </div>
             </div>

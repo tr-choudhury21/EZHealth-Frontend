@@ -52,9 +52,9 @@ const RegistrationPage = () => {
             }
         };
     
-        // if (isAuthenticated) {
-        //     return <Navigate to={"/"} />;
-        // }
+        if (isAuthenticated) {
+            return <Navigate to={"/"} />;
+        }
 
     return (
         <div className="bg-blue-100 min-h-screen flex justify-center items-center">
