@@ -57,7 +57,7 @@ const AppointmentPage = () => {
   useEffect(() => {
       const fetchDoctors = async () => {
       const { data } = await axios.get(
-          "http://localhost:5000/api/v1/user/doctors",
+          "https://ezhealth-backend.onrender.com/api/v1/user/doctors",
           { withCredentials: true }
       );
       setDoctors(data.doctors);
@@ -71,7 +71,7 @@ const AppointmentPage = () => {
         try {
         const hasVisitedBool = Boolean(hasVisited);
         const { data } = await axios.post(
-            "http://localhost:5000/api/v1/appointment/post",
+            "https://ezhealth-backend.onrender.com/api/v1/appointment/post",
             {
             firstName,
             lastName,
