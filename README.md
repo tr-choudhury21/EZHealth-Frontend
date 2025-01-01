@@ -27,7 +27,7 @@ A full-stack Hospital Appointment System built with the MERN stack. This applica
 Clone the repository
 
 ```bash
-  git clone https://github.com/tr-choudhury21/EZHealth-Backend.git
+  git clone https://github.com/tr-choudhury21/EZHealth-Frontend.git
 ```
     
 Install Dependencies for frontend
