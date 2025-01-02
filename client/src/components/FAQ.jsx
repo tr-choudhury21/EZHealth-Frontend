@@ -45,16 +45,17 @@ const FAQComponent = () => {
             <img
               src={doctor} // Replace with an actual doctor image
               alt="Doctor holding FAQ"
-              className="w-[550px] h-[480px] rounded-lg"
+              className="w-full h-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl rounded-lg"
             />
             {/* Circular Background */}
-            <div className="absolute -top-8 -left-8 w-48 h-48 bg-pink-200 rounded-full blur-2xl opacity-50"></div>
+            <div className="absolute -top-8 -left-8 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 bg-pink-200 rounded-full blur-2xl opacity-50"></div>
           </div>
         </div>
 
+
         {/* Right Content - FAQs */}
         <div className="relative max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-600 mb-4">
+          <h2 className="text-3xl md:text-4xl text-center font-bold text-blue-600 mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-gray-700 mb-8">
